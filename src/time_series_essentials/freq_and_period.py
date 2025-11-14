@@ -48,7 +48,9 @@ def main():
     y = y.astype(np.int16) 
     wavfile.write(wav_file_path, sampleRate, y)
 
-    # 
+    #
+    # From Google AI resulting from the search "python load a wave file and find dominant frequency" (with minor modification on my part)
+    #
     from scipy.fft import fft, fftfreq
     samplerate_in, data_in = wavfile.read(wav_file_path)
     if data_in.ndim > 1:  data_in = data_in.mean(axis=1)
@@ -60,7 +62,10 @@ def main():
     magnitudes = np.abs(yf[positive_frequencies_indices])
     dominant_frequency_index = np.argmax(magnitudes)
     dominant_frequency = positive_frequencies[dominant_frequency_index]
-    print(dominant_frequency)
+    assert int(dominant_frequency) == int(frequency)
+
+    import os
+    os.remove(wav_file_path)
     
 if __name__ == '__main__':
     main()
