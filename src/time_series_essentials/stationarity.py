@@ -97,7 +97,6 @@ def compute_verbose_adf_dict(
             'estimated_deviation_from_unit_root' : np.abs(1. - phi_hat),
             'half_life' : half_life,
             'half_life_what' : 'Estimated half-life of shocks',
-            #'ols_summary': model.summary().as_text(),
         },
     }
 
