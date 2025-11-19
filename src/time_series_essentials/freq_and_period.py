@@ -46,17 +46,20 @@ def main():
     y = maxint16 * y / m
     y = y.astype(np.int16) 
 
-    # From Google AI resulting from the search "python load a wave file and find dominant frequency" (with minor modification on my part)
-    from scipy.fft import fft, fftfreq
-    N = len(y)  # Number of samples
-    yf = fft(y)
-    xf = fftfreq(N, 1 / sampleRate)
-    positive_frequencies_indices = np.where(xf >= 0)
-    positive_frequencies = xf[positive_frequencies_indices]
-    magnitudes = np.abs(yf[positive_frequencies_indices])
-    dominant_frequency_index = np.argmax(magnitudes)
-    dominant_frequency = positive_frequencies[dominant_frequency_index]
+    
+    # # From Google AI resulting from the search "python load a wave file and find dominant frequency" (with minor modification on my part)
+    # from scipy.fft import fft, fftfreq
+    # N = len(y)  # Number of samples
+    # yf = fft(y)
+    # xf = fftfreq(N, 1 / sampleRate)
+    # positive_frequencies_indices = np.where(xf >= 0)
+    # positive_frequencies = xf[positive_frequencies_indices]
+    # magnitudes = np.abs(yf[positive_frequencies_indices])
+    # dominant_frequency_index = np.argmax(magnitudes)
+    # dominant_frequency = positive_frequencies[dominant_frequency_index]
 
+    from fourier_related import calculate_dominant_frequency
+    dominant_frequency = calculate_dominant_frequency(y, sample_rate_in_hertz = sampleRate)
     assert int(dominant_frequency) == int(frequency)
     
 if __name__ == '__main__':
