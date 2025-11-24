@@ -1,4 +1,4 @@
-from config.precision_config import float_tse
+from .config.precision_config import float_tse
 
 seconds_in_one_hour = float_tse(60. * 60.)
 
