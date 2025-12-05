@@ -7,7 +7,7 @@
 # load useful libraries
 #
 import numpy as np
-from config.precision_config import float_tse
+from .config.precision_config import float_tse
 
 
 def get_period_in_seconds_from_frequency_in_hertz(frequency : float_tse) -> float_tse:
